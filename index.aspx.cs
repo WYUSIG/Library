@@ -36,7 +36,7 @@ public partial class index : System.Web.UI.Page
         else
         {
             String selectSql = "SELECT * FROM administrator Where id=" + account1;
-            Boolean flag = login(selectSql, 1);
+            Boolean flag = login(selectSql, 0);
             if (flag == true)
             {
                 //跳转页面
