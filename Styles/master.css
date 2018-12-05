@@ -1,0 +1,40 @@
+﻿html body 
+{
+     margin:0;
+     pading:0;
+}
+.title
+        {
+            font-family: 幼圆;
+            background-color: #141414;
+             color: #FFFFFF;
+             height:47px;
+             width:100%;
+             font-size: xx-large;
+             padding:0; 
+             margin:0;
+             
+        }
+.showtime
+{
+    border-style: solid none none none; 
+    border-width: thin; 
+    border-color: #FFFFFF; 
+    background-color: #141414;
+    }
+.button
+{
+   background-color:#141414;
+   border: none;
+   Font-Size:15px;
+   color: white;
+    cursor:pointer;
+    outline:none;
+    }    
+ .button:hover
+{
+   
+   color: red;
+    
+ }
+   
