@@ -30,6 +30,7 @@ public partial class index : System.Web.UI.Page
             if (flag == true)
             {
                 //跳转页面
+
             }
             
         }
