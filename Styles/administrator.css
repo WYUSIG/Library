@@ -1,0 +1,16 @@
+﻿body 
+{
+    
+}
+.noborderButton
+{
+    border:none;
+    background-color:White;
+    width:100%
+}
+.commandButton
+{
+    width:50px;
+    background-color:#141414;
+        
+}
