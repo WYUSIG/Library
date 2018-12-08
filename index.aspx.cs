@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 
 public partial class index : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
         
@@ -30,7 +31,7 @@ public partial class index : System.Web.UI.Page
             if (flag == true)
             {
                 //跳转页面
-
+                Response.Redirect("reader.aspx?id="+account.Text+"&Mode=reader");
             }
             
         }
@@ -69,6 +70,7 @@ public partial class index : System.Web.UI.Page
                     else      //用户
                     {
                         b = reader.GetString(5);
+                       
                     }
                     if (b.Equals(password1))
                     {
