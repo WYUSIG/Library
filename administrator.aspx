@@ -83,7 +83,7 @@
                                     <asp:Label ID="Label2" runat="server" Text="借阅卡号："></asp:Label><asp:TextBox ID="cardNumber" runat="server"></asp:TextBox><br />
                                     <br />
                                     <br />
-                                    <asp:Button ID="Button1" Class="commandButton" runat="server" Text="借出" Onclick="lend"/>
+                                    <asp:Button ID="Button1" Class="commandButton" runat="server" Text="借   出" Onclick="lend"/>
                               </div>
                           </div>
                         </asp:View>  
@@ -99,7 +99,7 @@
                                         <asp:Label ID="Label4" runat="server" Text="借阅卡号："></asp:Label><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox><br />
                                         <br />
                                         <br />
-                                        <asp:Button ID="Button2" runat="server" Text="还回" />
+                                        <asp:Button ID="Button2" Class="commandButton" runat="server" Text="还   回" />
                                   </div>
                             </div> 
                         </asp:View>     

@@ -99,7 +99,7 @@ public class SqlHelp
         }
  
         // 返回DataTable
-        public DataTable GetDataTableValue(string sql)
+        public static DataTable GetDataTableValue(string sql)
         {
             OpenConn();
             DataTable dt = new DataTable();
