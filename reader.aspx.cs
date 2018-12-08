@@ -10,6 +10,7 @@ using System.Data;
 public partial class reader : System.Web.UI.Page
 {
     private string readerID;
+    SqlHelp sqlhelper = new SqlHelp();
     protected void Page_Load(object sender, EventArgs e)
     {
        readerID = Request.QueryString["id"];
@@ -25,8 +26,16 @@ public partial class reader : System.Web.UI.Page
         MultiView1.ActiveViewIndex = 0;
         //SqlHelp sqlHelper = new SqlHelp();
         string sql = "SELECT borrow.id as 借阅编号,bcid as 借阅卡号,borrowDate as 借阅日期,expireDate as 到期日期,book.name as 书名,borrow.ISBN FROM borrow,borrowCard,book WHERE borrow.bcid = borrowCard.id AND borrow.dueDate IS  NULL AND borrow.ISBN=book.ISBN AND borrowCard.readerid=" + readerID;
-        GridView1.DataSource = SqlHelp.GetDataTableValue(sql);
-        GridView1.DataBind();
+        int count = sqlhelper.SqlServerRecordCount(sql);
+        if (count > 0)
+        {
+            GridView1.DataSource = SqlHelp.GetDataTableValue(sql);
+            GridView1.DataBind();
+        }
+        else
+        {
+            Label1.Text = "无记录！";
+        }
 
       
     }
@@ -34,22 +43,37 @@ public partial class reader : System.Web.UI.Page
     {
         MultiView1.ActiveViewIndex = 1;
         string sql = "SELECT borrow.id as 借阅编号, bcid as 借阅卡号,borrowDate as 借阅日期,expireDate as 到期日期,dueDate as 归还日期,book.name as 书名,borrow.ISBN FROM borrow,borrowCard,book WHERE borrow.bcid = borrowCard.id AND borrow.dueDate IS NOT NULL AND borrow.ISBN=book.ISBN AND borrowCard.readerid=" + readerID;
-        GridView2.DataSource = SqlHelp.GetDataTableValue(sql);
-        GridView2.DataBind();
+        int count = sqlhelper.SqlServerRecordCount(sql);
+        if (count > 0)
+        {
+            GridView2.DataSource = SqlHelp.GetDataTableValue(sql);
+            GridView2.DataBind();
+        }
+        else
+        {
+            Label2.Text = "无记录！";
+        }
     }
 
     protected void ticket_Click(object sender, EventArgs e)
     {
         MultiView1.ActiveViewIndex = 2;
         string sql = "SELECT ticket.id AS 罚款单编号,ticket.bcid AS 借阅证编号,book.name AS 书名,ticket.ISBN,ticket.fineMoney AS 罚款金额,ticket.fineDate AS 罚款日期 FROM ticket,borrowCard,book WHERE ticket.bcid = borrowCard.id AND book.ISBN = ticket.ISBN AND borrowCard.readerId =" + readerID;
-        GridView3.DataSource = SqlHelp.GetDataTableValue(sql);
-        GridView3.DataBind();
-        string totalFine = "SELECT SUM(fineMoney) AS 总罚金 FROM ticket GROUP BY bcid HAVING bcid = (SELECT id FROM borrowCard WHERE readerId = "+readerID+" )";
-        DetailsView1.DataSource = SqlHelp.GetDataTableValue(totalFine);
-        DetailsView1.DataBind();
-        /*SqlDataReader reader = SqlHelp.GetDataReaderValue(totalFine);
-        Decimal fine =  reader.GetDecimal(0);
-        totalFineMsg.Text = "总金额："+fine.ToString() ;*/
+        int count = sqlhelper.SqlServerRecordCount(sql);
+        if (count > 0)
+        {
+            GridView3.DataSource = SqlHelp.GetDataTableValue(sql);
+            GridView3.DataBind();
+            string totalFine = "SELECT SUM(fineMoney) AS 总罚金 FROM ticket GROUP BY bcid HAVING bcid = (SELECT id FROM borrowCard WHERE readerId = " + readerID + " )";
+            DetailsView1.DataSource = SqlHelp.GetDataTableValue(totalFine);
+            DetailsView1.DataBind();
+        }
+        else
+        {
+            Label3.Text = "无记录！";
+        }
+        
+
     }
     protected void level_Click(object sender, EventArgs e)
     {

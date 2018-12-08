@@ -126,7 +126,7 @@
                                                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                                 <SortedDescendingHeaderStyle BackColor="#383838" />
                                             </asp:GridView>
-                                            
+                                            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
                                         </div>
                                      </div>
                                 </asp:View>
@@ -146,7 +146,7 @@
                                                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
                                                 <SortedDescendingHeaderStyle BackColor="#383838" />
                                             </asp:GridView>
-                                
+                                            <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
                                         </div>
                                     </div>
                                 </asp:View>
@@ -175,6 +175,7 @@
                                                 <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
                                                 <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
                                             </asp:DetailsView>
+                                            <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
                                         </div>
                                     </div>
                                 </asp:View>
