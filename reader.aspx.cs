@@ -10,7 +10,7 @@ using System.Data;
 public partial class reader : System.Web.UI.Page
 {
     private string readerID;
-    SqlHelp sqlhelper = new SqlHelp();
+    //SqlHelp sqlhelper = new SqlHelp();
     protected void Page_Load(object sender, EventArgs e)
     {
        readerID = Request.QueryString["id"];
@@ -26,7 +26,7 @@ public partial class reader : System.Web.UI.Page
         MultiView1.ActiveViewIndex = 0;
         //SqlHelp sqlHelper = new SqlHelp();
         string sql = "SELECT borrow.id as 借阅编号,bcid as 借阅卡号,borrowDate as 借阅日期,expireDate as 到期日期,book.name as 书名,borrow.ISBN FROM borrow,borrowCard,book WHERE borrow.bcid = borrowCard.id AND borrow.dueDate IS  NULL AND borrow.ISBN=book.ISBN AND borrowCard.readerid=" + readerID;
-        int count = sqlhelper.SqlServerRecordCount(sql);
+        int count = SqlHelp.SqlServerRecordCount(sql);
         if (count > 0)
         {
             GridView1.DataSource = SqlHelp.GetDataTableValue(sql);
@@ -43,7 +43,7 @@ public partial class reader : System.Web.UI.Page
     {
         MultiView1.ActiveViewIndex = 1;
         string sql = "SELECT borrow.id as 借阅编号, bcid as 借阅卡号,borrowDate as 借阅日期,expireDate as 到期日期,dueDate as 归还日期,book.name as 书名,borrow.ISBN FROM borrow,borrowCard,book WHERE borrow.bcid = borrowCard.id AND borrow.dueDate IS NOT NULL AND borrow.ISBN=book.ISBN AND borrowCard.readerid=" + readerID;
-        int count = sqlhelper.SqlServerRecordCount(sql);
+        int count = SqlHelp.SqlServerRecordCount(sql);
         if (count > 0)
         {
             GridView2.DataSource = SqlHelp.GetDataTableValue(sql);
@@ -59,7 +59,7 @@ public partial class reader : System.Web.UI.Page
     {
         MultiView1.ActiveViewIndex = 2;
         string sql = "SELECT ticket.id AS 罚款单编号,ticket.bcid AS 借阅证编号,book.name AS 书名,ticket.ISBN,ticket.fineMoney AS 罚款金额,ticket.fineDate AS 罚款日期 FROM ticket,borrowCard,book WHERE ticket.bcid = borrowCard.id AND book.ISBN = ticket.ISBN AND borrowCard.readerId =" + readerID;
-        int count = sqlhelper.SqlServerRecordCount(sql);
+        int count = SqlHelp.SqlServerRecordCount(sql);
         if (count > 0)
         {
             GridView3.DataSource = SqlHelp.GetDataTableValue(sql);

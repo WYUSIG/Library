@@ -31,8 +31,10 @@ public partial class index : System.Web.UI.Page
             if (flag == true)
             {
                 //跳转页面
-
-                Response.Redirect("reader.aspx?id=" + account.Text + "&Mode=reader");
+                Session["id"] = account.Text;
+                Session["pwd"] = password.Text;
+                Session["Mode"] = "reader";
+                Response.Redirect("reader.aspx?id=" + Session["id"] + "&Mode=" + Session["Mode"]);
 
             }
 
@@ -44,6 +46,10 @@ public partial class index : System.Web.UI.Page
             if (flag == true)
             {
                 //跳转页面
+                Session["id"] = account.Text;
+                Session["pwd"] = password.Text;
+                Session["Mode"] = "admin";
+                Response.Redirect("administrator.aspx?id=" + Session["id"] + "&Mode=" + Session["Mode"]);
             }
         }
 
