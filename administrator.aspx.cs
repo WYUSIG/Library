@@ -79,6 +79,7 @@ public partial class administrator : System.Web.UI.Page
         table.Columns["ISBN"].ColumnName = "图书编号";
         table.Columns["fineMoney"].ColumnName = "罚款金额";
         table.Columns["fineDate"].ColumnName = "罚款起始日期";
+        
         GridView1.DataSource = table;
         GridView1.DataBind();
     }
@@ -86,9 +87,51 @@ public partial class administrator : System.Web.UI.Page
     {
         MultiView1.ActiveViewIndex = 3;
     }
-    protected void readerInfo(object sender, EventArgs e)
+    //管理读者信息
+    protected void alterReader(object sender, EventArgs e)
+    {
+        MultiView1.ActiveViewIndex = 5;
+        String selectsql = "SELECT reader.id,reader.name,reader.sex,reader.phone,borrowCard.id,borrowCard.blid,reader.password FROM borrowCard,reader WHERE  borrowCard.readerid=reader.id";
+        DataTable table = SqlHelp.GetDataTableValue(selectsql);
+        table.Columns["id"].ColumnName = "读者编号";
+        table.Columns["name"].ColumnName = "读者姓名";
+        table.Columns["sex"].ColumnName = "读者性别";
+        table.Columns["phone"].ColumnName = "读者电话";
+        table.Columns["id1"].ColumnName = "借阅卡号";
+        table.Columns["blid"].ColumnName = "借阅等级";
+        table.Columns["password"].ColumnName = "读者密码";
+        //table.Columns["读者性别"].DataType = Type.GetType("System.String");
+        Reader reader=new Reader();
+        DataTable table1 = reader.UpdateDataTable(table);
+        foreach (DataRow dr in table1.Rows)  //对特定的行添加限制条件
+        {
+            if (dr[2].Equals("0"))
+            {
+                dr[2] = "男";
+            }
+            else
+            {
+                dr[2] = "女";
+            }
+        }
+        GridView4.DataSource = table1;
+        GridView4.DataBind();
+    }
+    protected void addbookCatagory(object sender, EventArgs e)
     {
         
+    }
+    protected void alterbookCatagory(object sender, EventArgs e)
+    {
+
+    }
+    protected void addBook(object sender, EventArgs e)
+    {
+
+    }
+    protected void alterBook(object sender, EventArgs e)
+    {
+
     }
     //借书响应函数
     protected void lend(object sender, EventArgs e)
@@ -184,7 +227,16 @@ public partial class administrator : System.Web.UI.Page
     protected void Button13_Click(object sender, EventArgs e)
     {
         String name = TextBox2.Text;
-        String sex = DropDownList1.SelectedValue;
+        String sex;
+        if (DropDownList1.SelectedValue == "男")
+        {
+            sex="0";
+        }
+        else
+        {
+            sex = "1";
+        }
+        //String sex = DropDownList1.SelectedValue;
         String phone = TextBox6.Text;
         String password = TextBox5.Text;
         String level = DropDownList8.SelectedValue;
@@ -208,7 +260,15 @@ public partial class administrator : System.Web.UI.Page
                         MultiView1.ActiveViewIndex = 4;
                         Label14.Text = id;
                         Label9.Text = name;
-                        Label10.Text = sex;
+                        if (sex == "0")
+                        {
+                            Label10.Text = "男";
+                        }
+                        else
+                        {
+                            Label10.Text = "女";
+                        }
+                        
                         Label11.Text = phone;
                         if(cardId!="错误")
                         {
@@ -233,6 +293,102 @@ public partial class administrator : System.Web.UI.Page
         else
         {
             Response.Write("<script>alert('该电话号码读者已经存在')</script>");
+        }
+    }
+
+    //管理读者查询响应函数
+    protected void Button18_Click(object sender, EventArgs e)
+    {
+        String readerCard = TextBox18.Text;
+        Reader reader = new Reader();
+        String id = reader.getReaderId(readerCard);
+        
+        if (id != "错误")
+        {
+            MultiView1.ActiveViewIndex = 10;
+            String selectsql = "SELECT reader.name,reader.sex,reader.phone,borrowCard.blid,reader.password,reader.id,borrowCard.id FROM borrowCard,reader WHERE  borrowCard.readerid=reader.id AND reader.id="+id;
+            SqlDataReader reader1 = SqlHelp.GetDataReaderValue(selectsql);
+            if (reader1.Read())
+            {
+                String name = reader1.GetString(0);
+                int temp = reader1.GetInt32(1);
+                String sex;
+                if (temp == 0)
+                {
+                    sex = "男";
+                }
+                else
+                {
+                    sex = "女";
+                }
+                String phone = reader1.GetString(2);
+                int temp1 = reader1.GetInt32(3);
+                String level = temp1.ToString();
+                String password = reader1.GetString(4);
+                int temp2 = reader1.GetInt32(5);
+                String readerId = temp2.ToString();
+                int temp3 = reader1.GetInt32(6);
+                String card = temp3.ToString();
+                Label22.Text = readerId;
+                TextBox7.Text = name;
+                this.DropDownList2.ClearSelection(); 
+                DropDownList2.Items.FindByText(sex).Selected = true;
+                TextBox8.Text = phone;
+                Label23.Text = card;
+                this.DropDownList9.ClearSelection();
+                DropDownList9.Items.FindByText(level).Selected = true;
+                TextBox9.Text = password;
+            }
+        }
+        else
+        {
+            Response.Write("<script>alert('查询不到该读者')</script>");
+        }
+    }
+    //删除读者
+    protected void Button17_Click(object sender, EventArgs e)
+    {
+        Reader reader = new Reader();
+        String readerId = Label22.Text;
+        Boolean flag1 = reader.deleteCardByreaderId(readerId);
+        Boolean flag2 = reader.deleteReaderById(readerId);
+        if (flag1 == true && flag2 == true)
+        {
+            Response.Write("<script>alert('删除成功')</script>");
+        }
+        else
+        {
+            Response.Write("<script>alert('删除失败')</script>");
+        }
+    }
+    //修改读者
+    protected void Button14_Click(object sender, EventArgs e)
+    {
+        Reader reader=new Reader();
+        String name = TextBox7.Text;
+        String a = DropDownList2.SelectedValue;
+        String sex;
+        if (a == "男")
+        {
+            sex = "0";
+        }
+        else 
+        {
+            sex = "1";
+        }
+        String readerId = Label22.Text;
+        String phone = TextBox8.Text;
+        String level = DropDownList9.SelectedValue;
+        String password = TextBox9.Text;
+        Boolean flag1=reader.update(readerId,name,sex,phone,password);
+        Boolean flag2=reader.updateLevel(readerId,level);
+        if (flag1 == true && flag2 == true)
+        {
+            Response.Write("<script>alert('修改成功')</script>");
+        }
+        else
+        {
+            Response.Write("<script>alert('修改失败')</script>");
         }
     }
 }
