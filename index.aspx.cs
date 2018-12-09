@@ -31,11 +31,9 @@ public partial class index : System.Web.UI.Page
             if (flag == true)
             {
                 //跳转页面
-<<<<<<< Updated upstream
-                Response.Redirect("reader.aspx?id="+account.Text+"&Mode=reader");
-=======
+
                 Response.Redirect("reader.aspx?id=" + account.Text + "&Mode=reader");
->>>>>>> Stashed changes
+
             }
 
         }
@@ -56,8 +54,7 @@ public partial class index : System.Web.UI.Page
         String account1 = account.Text;
         String password1 = password.Text;
         //String selectSql = "SELECT * FROM administrator Where id=" + account1;
-        SqlHelp sqlHelper = new SqlHelp();
-        int count = sqlHelper.SqlServerRecordCount(selectSql);//返回符合的结果数量
+        int count = SqlHelp.SqlServerRecordCount(selectSql);//返回符合的结果数量
         if (count > 0)//如果信息>0则说明匹配成功
         {
             SqlDataReader reader = SqlHelp.GetDataReaderValue(selectSql);
@@ -74,11 +71,6 @@ public partial class index : System.Web.UI.Page
                     else      //用户
                     {
                         b = reader.GetString(5);
-<<<<<<< Updated upstream
-                       
-=======
-
->>>>>>> Stashed changes
                     }
                     if (b.Equals(password1))
                     {
