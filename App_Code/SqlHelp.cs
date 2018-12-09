@@ -75,7 +75,7 @@ public class SqlHelp
  
  
         // 返回DataSet
-        public DataSet GetDataSetValue(string sql, string tableName)
+        public static DataSet GetDataSetValue(string sql, string tableName)
         {
             OpenConn();
             SqlDataAdapter da;
@@ -87,7 +87,7 @@ public class SqlHelp
         }
  
         //  返回DataView
-        public DataView GetDataViewValue(string sql)
+        public static DataView GetDataViewValue(string sql)
         {
             OpenConn();
             SqlDataAdapter da;
@@ -110,7 +110,7 @@ public class SqlHelp
         }
  
         // 执行一个SQL操作:添加、删除、更新操作
-        public void ExecuteNonQuery(string sql)
+        public static void ExecuteNonQuery(string sql)
         {
             OpenConn();
             SqlCommand cmd;
@@ -121,7 +121,7 @@ public class SqlHelp
         }
  
         // 执行一个SQL操作:添加、删除、更新操作，返回受影响的行
-        public int ExecuteNonQueryCount(string sql)
+        public static int ExecuteNonQueryCount(string sql)
         {
             OpenConn();
             SqlCommand cmd;
@@ -131,7 +131,7 @@ public class SqlHelp
         }
  
         //执行一条返回第一条记录第一列的SqlCommand命令
-        public object ExecuteScalar(string sql)
+        public static object ExecuteScalar(string sql)
         {
             OpenConn();
             SqlCommand cmd;
@@ -141,7 +141,7 @@ public class SqlHelp
         }
  
         // 返回记录数
-        public int SqlServerRecordCount(string sql)
+        public static int SqlServerRecordCount(string sql)
         {
             OpenConn();
             SqlCommand cmd = new SqlCommand();

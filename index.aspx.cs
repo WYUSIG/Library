@@ -11,7 +11,7 @@ public partial class index : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+
     }
     protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
     {
@@ -31,9 +31,13 @@ public partial class index : System.Web.UI.Page
             if (flag == true)
             {
                 //跳转页面
+<<<<<<< Updated upstream
                 Response.Redirect("reader.aspx?id="+account.Text+"&Mode=reader");
+=======
+                Response.Redirect("reader.aspx?id=" + account.Text + "&Mode=reader");
+>>>>>>> Stashed changes
             }
-            
+
         }
         else
         {
@@ -44,10 +48,10 @@ public partial class index : System.Web.UI.Page
                 //跳转页面
             }
         }
-        
+
     }
 
-    private Boolean login(String selectSql,int flag)
+    private Boolean login(String selectSql, int flag)
     {
         String account1 = account.Text;
         String password1 = password.Text;
@@ -70,7 +74,11 @@ public partial class index : System.Web.UI.Page
                     else      //用户
                     {
                         b = reader.GetString(5);
+<<<<<<< Updated upstream
                        
+=======
+
+>>>>>>> Stashed changes
                     }
                     if (b.Equals(password1))
                     {
