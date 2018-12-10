@@ -117,21 +117,37 @@ public partial class administrator : System.Web.UI.Page
         GridView4.DataSource = table1;
         GridView4.DataBind();
     }
+    protected void addbookRoom(object sender, EventArgs e)
+    {
+        MultiView1.ActiveViewIndex = 13;
+    }
+    protected void alterbookRoom(object sender, EventArgs e)
+    {
+        MultiView1.ActiveViewIndex = 14;
+        String selectsql = "SELECT * FROM bookRoom";
+        DataTable table = SqlHelp.GetDataTableValue(selectsql);
+        table.Columns["id"].ColumnName = "书库编号";
+        table.Columns["name"].ColumnName = "书库名称";
+        table.Columns["address"].ColumnName = "书库地址";
+        table.Columns["phone"].ColumnName = "联系电话";
+        GridView5.DataSource = table;
+        GridView5.DataBind();
+    }
     protected void addbookCatagory(object sender, EventArgs e)
     {
-        
+        MultiView1.ActiveViewIndex = 6;
     }
     protected void alterbookCatagory(object sender, EventArgs e)
     {
-
+        MultiView1.ActiveViewIndex = 7;
     }
     protected void addBook(object sender, EventArgs e)
     {
-
+        MultiView1.ActiveViewIndex = 8;
     }
     protected void alterBook(object sender, EventArgs e)
     {
-
+        MultiView1.ActiveViewIndex = 9;
     }
     //借书响应函数
     protected void lend(object sender, EventArgs e)
@@ -389,6 +405,87 @@ public partial class administrator : System.Web.UI.Page
         else
         {
             Response.Write("<script>alert('修改失败')</script>");
+        }
+    }
+    //添加书库响应函数
+    protected void Button27_Click(object sender, EventArgs e)
+    {
+        BookRoom bookroom = new BookRoom();
+        String name = TextBox29.Text;
+        String address = TextBox31.Text;
+        String phone = TextBox30.Text;
+        Boolean flag1 = bookroom.check(name);
+        Boolean flag2;
+        if (flag1 == true)
+        {
+            flag2 = bookroom.insert(name, address, phone);
+            if (flag2 == true)
+            {
+                Response.Write("<script>alert('添加成功')</script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('添加失败')</script>");
+            }
+        }
+        else
+        {
+            Response.Write("<script>alert('该书库名已经存在')</script>");
+        }
+    }
+    //书库查询响应函数
+    protected void Button28_Click(object sender, EventArgs e)
+    {
+        String id = TextBox32.Text;
+        MultiView1.ActiveViewIndex = 15;
+        String selectsql = "SELECT * FROM bookRoom WHERE id="+id;
+        Label30.Text = id;
+        try
+        {
+            SqlDataReader reader = SqlHelp.GetDataReaderValue(selectsql);
+            while (reader.Read())
+            {
+                TextBox33.Text = reader.GetString(1);
+                TextBox34.Text = reader.GetString(2);
+                TextBox35.Text = reader.GetString(3);
+            }
+        }
+        catch (System.InvalidCastException ee)
+        {
+            Response.Write("<script>alert('系统出错')</script>");
+        }
+    }
+    //书库修改响应函数
+    protected void Button29_Click(object sender, EventArgs e)
+    {
+        BookRoom bookroom = new BookRoom();
+        String id = Label30.Text;
+        String name = TextBox33.Text;
+        String address = TextBox34.Text;
+        String phone = TextBox35.Text;
+        Boolean flag = bookroom.update(id,name,address,phone);
+        if(flag==true)
+        {
+            Response.Write("<script>alert('修改成功')</script>");
+        }
+        else
+        {
+            Response.Write("<script>alert('修改失败')</script>");
+        }
+    }
+    //书库删除响应函数
+    protected void Button30_Click(object sender, EventArgs e)
+    {
+        BookRoom bookroom = new BookRoom();
+        String id = Label30.Text;
+        Boolean flag = bookroom.delete(id);
+        if (flag == true)
+        {
+            Response.Write("<script>alert('删除成功')</script>");
+        }
+        else
+        {
+            Response.Write("<script>alert('删除失败，可能存在图书类别与之关联')</script>");
         }
     }
 }

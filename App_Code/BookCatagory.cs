@@ -5,19 +5,19 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data;
 /// <summary>
-///Book 的摘要说明
+///BookCatagory 的摘要说明
 /// </summary>
-public class Book
+public class BookCatagory
 {
-	public Book()
+	public BookCatagory()
 	{
 		//
 		//TODO: 在此处添加构造函数逻辑
 		//
 	}
-    public Boolean check(String ISBN)
+    public Boolean check(String name)
     {
-        String selectsql = "SELECT * FROM book WHERE ISBN='"+ISBN+"'";
+        String selectsql = "SELECT * FROM bookCatagory WHERE name='" + name + "'";
         try
         {
             SqlDataReader reader = SqlHelp.GetDataReaderValue(selectsql);
@@ -34,15 +34,15 @@ public class Book
         {
             return false;
         }
+        
     }
-
-    public Boolean insert(String ISBN, String catagoryName, String name, String publish, String author, String publishDate, String price, String storagedate, String stockNumber)
+    public Boolean insert(String name, String roomName, String demo)
     {
-        BookCatagory bookCatagory = new BookCatagory();
-        String catagoryId = bookCatagory.getIdByName(catagoryName);
-        if (catagoryId != "错误")
+        BookRoom bookRoom = new BookRoom();
+        String roomId = bookRoom.getIdByName(roomName);
+        if (roomId != "错误")
         {
-            String insertsql = "INSERT INTO book(ISBN,catagoryId,name,publish,author,publishDate,price,storagedate,stockNumber,inNumber) VALUES('" + ISBN + "'," + catagoryId + ",'" + name + "','" + publish + "','" + author + "','" + publishDate + "'," + price + ",'" + storagedate + "'," + stockNumber + ","+stockNumber+")";
+            String insertsql = "INSERT INTO bookCatagory(name,brid,demo) VALUES('"+name+"',"+roomId+",'"+demo+"')";
             try
             {
                 int flag = SqlHelp.ExecuteNonQueryCount(insertsql);
@@ -65,13 +65,13 @@ public class Book
             return false;
         }
     }
-    public Boolean update(String ISBN, String catagoryName, String name, String publish, String author, String publishDate, String price, String storagedate, String stockNumber, String inNumber)
+    public Boolean update(String id,String name, String roomName, String demo)
     {
-        BookCatagory bookCatagory = new BookCatagory();
-        String catagoryId = bookCatagory.getIdByName(catagoryName);
-        if (catagoryId != "错误")
+        BookRoom bookRoom = new BookRoom();
+        String roomId = bookRoom.getIdByName(roomName);
+        if (roomId != "错误")
         {
-            String updatesql = "UPDATE book SET catagoryId="+catagoryId+",name='"+name+"',publish='"+publish+"',author='"+author+"',publishDate='"+publishDate+"',price="+price+",storagedate='"+storagedate+"',stockNumber="+stockNumber+",inNumber="+inNumber+" WHERE ISBN='"+ISBN+"'";
+            String updatesql = "UPDATE bookCatagory SET name='"+name+"',brid="+roomId+",demo='"+demo+"' WHERE id="+id;
             try
             {
                 int flag = SqlHelp.ExecuteNonQueryCount(updatesql);
@@ -94,9 +94,10 @@ public class Book
             return false;
         }
     }
-    public Boolean delete(String ISBN)
+
+    public Boolean delete(String id)
     {
-        String deletesql = "DELETE FROM book WHERE ISBN='"+ISBN+"'";
+        String deletesql = "DELETE FROM bookCatagory WHERE id="+id;
         try
         {
             int flag = SqlHelp.ExecuteNonQueryCount(deletesql);
@@ -112,6 +113,28 @@ public class Book
         catch (System.InvalidCastException e)
         {
             return false;
+        }
+    }
+
+    public String getIdByName(String name)
+    {
+        String selectsql = "SELECT id FROM bookCatagory WHERE name='"+name+"'";
+        try
+        {
+            SqlDataReader reader = SqlHelp.GetDataReaderValue(selectsql);
+            if (reader.Read())
+            {
+                String id = reader.GetInt32(0).ToString();
+                return id;
+            }
+            else
+            {
+                return "错误";
+            }
+        }
+        catch (System.InvalidCastException e)
+        {
+            return "错误";
         }
     }
 }

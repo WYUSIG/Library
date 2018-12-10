@@ -69,11 +69,28 @@
 			                <h4 class="panel-title">
 				                <a id="A1" data-toggle="collapse" data-parent="#accordion" 
 				                   href="#collapseFour" onclick="a(this);">
-					                <img id="Img1" alt="" style="width:30px; height:30px;" src="res/下一步.png" /> 图书类别管理
+					                <img id="Img1" alt="" style="width:30px; height:30px;" src="res/下一步.png" /> 书库管理
 				                </a>
 			                </h4>
 		                </div>
 		                <div id="collapseFour" class="panel-collapse collapse">
+			                <div class="panel-body">
+                                <asp:Button ID="Button25" Class="noborderButton" runat="server" Text="添加书库" onclick="addbookRoom"/><br /><br />
+                                <asp:Button ID="Button26" Class="noborderButton" runat="server" Text="管理书库" onclick="alterbookRoom"/>
+
+			                </div>
+		                </div>
+	                </div>
+                    <div class="panel panel-default">
+		                <div class="panel-heading">
+			                <h4 class="panel-title">
+				                <a id="A2" data-toggle="collapse" data-parent="#accordion" 
+				                   href="#collapseFive" onclick="a(this);">
+					                <img id="Img2" alt="" style="width:30px; height:30px;" src="res/下一步.png" /> 图书类别管理
+				                </a>
+			                </h4>
+		                </div>
+		                <div id="collapseFive" class="panel-collapse collapse">
 			                <div class="panel-body">
                                 <asp:Button ID="Button6" Class="noborderButton" runat="server" Text="添加图书类别" onclick="addbookCatagory"/><br /><br />
                                 <asp:Button ID="Button10" Class="noborderButton" runat="server" Text="修改图书类别" onclick="alterbookCatagory"/>
@@ -84,13 +101,13 @@
                     <div class="panel panel-default">
 		                <div class="panel-heading">
 			                <h4 class="panel-title">
-				                <a id="A2" data-toggle="collapse" data-parent="#accordion" 
-				                   href="#collapseFive" onclick="a(this);">
-					                <img id="Img2" alt="" style="width:30px; height:30px;" src="res/下一步.png" /> 图书信息管理
+				                <a id="A3" data-toggle="collapse" data-parent="#accordion" 
+				                   href="#collapseSix" onclick="a(this);">
+					                <img id="Img3" alt="" style="width:30px; height:30px;" src="res/下一步.png" /> 图书信息管理
 				                </a>
 			                </h4>
 		                </div>
-		                <div id="collapseFive" class="panel-collapse collapse">
+		                <div id="collapseSix" class="panel-collapse collapse">
 			                <div class="panel-body">
                                 <asp:Button ID="Button11" Class="noborderButton" runat="server" Text="录入图书" onclick="addBook"/><br /><br />
                                 <asp:Button ID="Button12" Class="noborderButton" runat="server" Text="修改图书" onclick="alterBook"/>
@@ -775,7 +792,135 @@
                                      </td>
                                  </tr>
                              </table>
-                        </asp:View>              
+                        </asp:View>   
+                        <asp:View ID="View14" runat="server">  
+                             <table class="styleTable" border="1">
+                                 <tr>
+                                     <td>
+                                         <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
+                                             <asp:Label ID="Label27" runat="server" Text="添 加 书 库" Style="font-weight:bold;"></asp:Label>
+                                         </div>
+                                         
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td>
+                                     <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                        请输入书库名称:&nbsp;&nbsp;<asp:TextBox ID="TextBox29" runat="server"></asp:TextBox>
+                                     </div>
+                                         
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td>
+                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                        请输入书库地址:&nbsp;&nbsp;<asp:TextBox ID="TextBox31" runat="server"></asp:TextBox>
+                                          </div>
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td>
+                                        <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                        请输入联系电话:&nbsp;&nbsp;<asp:TextBox ID="TextBox30" runat="server"></asp:TextBox>
+                                        </div>    
+                                     </td>
+                                 </tr>
+                                 
+                                 <tr>
+                                     <td>
+                                         <div style="text-align:center; padding:20px;">
+                                             <asp:Button ID="Button27" runat="server" Text="添  加" onclick="Button27_Click"/>
+                                        </div>  
+                                     </td>
+                                 </tr>
+                             </table>
+                        </asp:View>   
+                        <asp:View ID="View15" runat="server">  
+                             <table class="styleTable" border="1">
+                                 <tr>
+                                     <td>
+                                         <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
+                                             <asp:Label ID="Label28" runat="server" Text="修 改 书 库 信 息" Style="font-weight:bold;"></asp:Label>
+                                         </div>
+                                         
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td>
+                                     <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <asp:GridView ID="GridView5" runat="server">
+                                            
+                                         </asp:GridView>
+                                         <br />
+                                         <br />
+                                     </div>
+                                         
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td>
+                                         <div style="text-align:center; padding:20px;">
+                                             编号：&nbsp;&nbsp;<asp:TextBox ID="TextBox32" runat="server" Style="width:40%"></asp:TextBox>
+                                             <br />
+                                             <br />
+                                             <asp:Button ID="Button28" runat="server" Text="查  询" onclick="Button28_Click" />
+                                         </div>
+                                         
+                                     </td>
+                                 </tr>
+                             </table>
+                        </asp:View>    
+                        <asp:View ID="View16" runat="server">  
+                             <table class="styleTable" border="1">
+                                 <tr>
+                                     <td>
+                                         <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
+                                             <asp:Label ID="Label29" runat="server" Text="修 改 书 库 信 息" Style="font-weight:bold;"></asp:Label>
+                                         </div>
+                                         
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td>
+                                     <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                        书库编号:&nbsp;&nbsp;<asp:Label ID="Label30" runat="server" Text="Label"></asp:Label>
+                                     </div>
+                                         
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td>
+                                     <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                        书库名称:&nbsp;&nbsp;<asp:TextBox ID="TextBox33" runat="server"></asp:TextBox>
+                                     </div>
+                                         
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td>
+                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                        书库地址:&nbsp;&nbsp;<asp:TextBox ID="TextBox34" runat="server"></asp:TextBox>
+                                          </div>
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td>
+                                        <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                        联系电话:&nbsp;&nbsp;<asp:TextBox ID="TextBox35" runat="server"></asp:TextBox>
+                                        </div>    
+                                     </td>
+                                 </tr>
+                                 
+                                 <tr>
+                                     <td>
+                                         <div style="text-align:center; padding:20px;">
+                                             <asp:Button ID="Button29" runat="server" Text="修  改" onclick="Button29_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button
+                                                 ID="Button30" runat="server" Text="删  除" onclick="Button30_Click" />
+                                        </div>
+                                     </td>
+                                 </tr>
+                             </table>
+                        </asp:View>          
                     </asp:MultiView>  
                     </ContentTemplate>
                     <Triggers>
@@ -784,7 +929,13 @@
                         <asp:AsyncPostBackTrigger ControlID="Button4" EventName="Click" />         
                         <asp:AsyncPostBackTrigger ControlID="Button5" EventName="Click" />  
                         <asp:AsyncPostBackTrigger ControlID="Button7" EventName="Click" />  
-                        <asp:AsyncPostBackTrigger ControlID="Button8" EventName="Click" />   
+                        <asp:AsyncPostBackTrigger ControlID="Button8" EventName="Click" />
+                        <asp:AsyncPostBackTrigger ControlID="Button25" EventName="Click" />  
+                        <asp:AsyncPostBackTrigger ControlID="Button26" EventName="Click" />
+                        <asp:AsyncPostBackTrigger ControlID="Button6" EventName="Click" />  
+                        <asp:AsyncPostBackTrigger ControlID="Button10" EventName="Click" />
+                        <asp:AsyncPostBackTrigger ControlID="Button11" EventName="Click" />  
+                        <asp:AsyncPostBackTrigger ControlID="Button12" EventName="Click" />    
                         <asp:PostBackTrigger ControlID="Button9"/> 
                         <asp:PostBackTrigger ControlID="Button2"/> 
                         <asp:PostBackTrigger ControlID="Button1"/>
@@ -792,6 +943,10 @@
                         <asp:PostBackTrigger ControlID="Button14"/>
                         <asp:PostBackTrigger ControlID="Button17"/>
                         <asp:PostBackTrigger ControlID="Button18"/>
+                        <asp:PostBackTrigger ControlID="Button27"/>
+                        <asp:PostBackTrigger ControlID="Button28"/>
+                        <asp:PostBackTrigger ControlID="Button29"/>
+                        <asp:PostBackTrigger ControlID="Button30"/>
                     </Triggers>
                 </asp:UpdatePanel>
             </td>
