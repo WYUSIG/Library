@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using System.Data;
+using System.Collections;
 /// <summary>
 ///BookRoom 的摘要说明
 /// </summary>
@@ -101,6 +102,43 @@ public class BookRoom
             {
                 return "错误";
             }
+        }
+        catch (System.InvalidCastException e)
+        {
+            return "错误";
+        }
+    }
+    public ArrayList getName()
+    {
+        String selectsql = "SELECT name FROM bookRoom";
+        ArrayList name = new ArrayList();
+        try
+        {
+            SqlDataReader reader = SqlHelp.GetDataReaderValue(selectsql);
+            while (reader.Read())
+            {
+                name.Add(reader.GetString(0));
+            }
+            return name;
+        }
+        catch (System.InvalidCastException e)
+        {
+            return name;
+        }
+    }
+
+    public String getNameById(String id)
+    {
+        String selectsql = "SELECT name FROM bookRoom WHERE id=" + id;
+        try
+        {
+            SqlDataReader reader = SqlHelp.GetDataReaderValue(selectsql);
+            if (reader.Read())
+            {
+                String name = reader.GetString(0);
+                return name;
+            }
+            return "错误";
         }
         catch (System.InvalidCastException e)
         {

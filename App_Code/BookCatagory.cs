@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using System.Data;
+using System.Collections;
 /// <summary>
 ///BookCatagory 的摘要说明
 /// </summary>
@@ -135,6 +136,24 @@ public class BookCatagory
         catch (System.InvalidCastException e)
         {
             return "错误";
+        }
+    }
+    public ArrayList getName()
+    {
+        String selectsql = "SELECT name FROM bookCatagory";
+        ArrayList name = new ArrayList();
+        try
+        {
+            SqlDataReader reader = SqlHelp.GetDataReaderValue(selectsql);
+            while (reader.Read())
+            {
+                name.Add(reader.GetString(0));
+            }
+            return name;
+        }
+        catch (System.InvalidCastException e)
+        {
+            return name;
         }
     }
 }

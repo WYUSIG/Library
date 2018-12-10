@@ -379,7 +379,7 @@
                                  <tr>
                                      <td>
                                          <div style="text-align:center; padding:20px;">
-                                             <asp:Button ID="Button15" runat="server" Text="添  加"/>
+                                             <asp:Button ID="Button15" runat="server" Text="添  加" onclick="Button15_Click"/>
                                         </div>  
                                      </td>
                                  </tr>
@@ -414,7 +414,7 @@
                                              编号：&nbsp;&nbsp;<asp:TextBox ID="TextBox19" runat="server"></asp:TextBox>
                                              <br />
                                              <br />
-                                             <asp:Button ID="Button19" runat="server" Text="查  询" />
+                                             <asp:Button ID="Button19" runat="server" Text="查  询" onclick="Button19_Click" />
                                          </div>
                                          
                                      </td>
@@ -496,14 +496,14 @@
                                  <tr>
                                      <td>
                                          <div style="margin:0px 0px 0px 400px; padding:20px;">
-                                            请输入入库时间:&nbsp;&nbsp;<asp:DropDownList ID="DropDownList5" runat="server" AutoPostBack="True" 
-                                                onselectedindexchanged="ddlYear_SelectedIndexChanged">
+                                            请输入入库时间:&nbsp;&nbsp;<asp:DropDownList ID="ddlYear1" runat="server" AutoPostBack="True" 
+                                                onselectedindexchanged="ddlYear_SelectedIndexChanged1">
                                             </asp:DropDownList>
-                                            年<asp:DropDownList ID="DropDownList6" runat="server" AutoPostBack="True" 
-                                                onselectedindexchanged="ddlMonth_SelectedIndexChanged">
+                                            年<asp:DropDownList ID="ddlMonth1" runat="server" AutoPostBack="True" 
+                                                onselectedindexchanged="ddlMonth_SelectedIndexChanged1">
                                             </asp:DropDownList>
-                                            月<asp:DropDownList ID="DropDownList7" runat="server" AutoPostBack="True" 
-                                                onselectedindexchanged="ddlDay_SelectedIndexChanged">
+                                            月<asp:DropDownList ID="ddlDay1" runat="server" AutoPostBack="True" 
+                                                onselectedindexchanged="ddlDay_SelectedIndexChanged1">
                                             </asp:DropDownList>
                                         </div>  
                                      </td>
@@ -518,7 +518,7 @@
                                  <tr>
                                      <td>
                                          <div style="text-align:center; padding:20px;">
-                                             <asp:Button ID="Button16" runat="server" Text="添  加" onclick="Button13_Click" />
+                                             <asp:Button ID="Button16" runat="server" Text="添  加" onclick="Button16_Click" />
                                         </div>  
                                      </td>
                                  </tr>
@@ -536,7 +536,11 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 35%; padding:20px;">
+                                         <asp:TextBox ID="TextBox36" runat="server" Style="width:40%"></asp:TextBox>&nbsp;&nbsp;&nbsp;<asp:Button
+                                             ID="Button31" runat="server" Text="搜  索" />
+                                             <br />
+                                             <br />
                                          <asp:GridView ID="GridView3" runat="server">
                                             
                                          </asp:GridView>
@@ -552,7 +556,7 @@
                                              ISBN：&nbsp;&nbsp;<asp:TextBox ID="TextBox20" runat="server" Style="width:40%"></asp:TextBox>
                                              <br />
                                              <br />
-                                             <asp:Button ID="Button20" runat="server" Text="查  询" />
+                                             <asp:Button ID="Button20" runat="server" Text="查  询" onclick="Button20_Click" />
                                          </div>
                                          
                                      </td>
@@ -683,8 +687,8 @@
                                  <tr>
                                      <td>
                                          <div style="text-align:center; padding:20px;">
-                                             <asp:Button ID="Button21" runat="server" Text="修  改" onclick="Button14_Click"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button
-                                                 ID="Button22" runat="server" Text="删  除" onclick="Button17_Click" />
+                                             <asp:Button ID="Button21" runat="server" Text="修  改" onclick="Button21_Click"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button
+                                                 ID="Button22" runat="server" Text="删  除" onclick="Button22_Click"/>
                                         </div>  
                                      </td>
                                  </tr>
@@ -703,7 +707,7 @@
                                  <tr>
                                      <td>
                                      <div style="margin:0px 0px 0px 400px; padding:20px;">
-                                        图书ISBN:&nbsp;&nbsp;<asp:TextBox ID="TextBox23" runat="server"></asp:TextBox>
+                                        图书ISBN:&nbsp;&nbsp;<asp:Label ID="Label31" runat="server" Text="Label"></asp:Label>
                                      </div>
                                          
                                      </td>
@@ -741,14 +745,14 @@
                                  <tr>
                                      <td>
                                          <div style="margin:0px 0px 0px 400px; padding:20px;">
-                                            出版日期:&nbsp;&nbsp;<asp:DropDownList ID="DropDownList12" runat="server" AutoPostBack="True" 
-                                                onselectedindexchanged="ddlYear_SelectedIndexChanged">
+                                            出版日期:&nbsp;&nbsp;<asp:DropDownList ID="ddlYear2" runat="server" AutoPostBack="True" 
+                                                onselectedindexchanged="ddlYear_SelectedIndexChanged2">
                                             </asp:DropDownList>
-                                            年<asp:DropDownList ID="DropDownList13" runat="server" AutoPostBack="True" 
-                                                onselectedindexchanged="ddlMonth_SelectedIndexChanged">
+                                            年<asp:DropDownList ID="ddlMonth2" runat="server" AutoPostBack="True" 
+                                                onselectedindexchanged="ddlMonth_SelectedIndexChanged2">
                                             </asp:DropDownList>
-                                            月<asp:DropDownList ID="DropDownList14" runat="server" AutoPostBack="True" 
-                                                onselectedindexchanged="ddlDay_SelectedIndexChanged">
+                                            月<asp:DropDownList ID="ddlDay2" runat="server" AutoPostBack="True" 
+                                                onselectedindexchanged="ddlDay_SelectedIndexChanged2">
                                             </asp:DropDownList>
                                             日</div>
                                         </div>  
@@ -764,14 +768,14 @@
                                  <tr>
                                      <td>
                                          <div style="margin:0px 0px 0px 400px; padding:20px;">
-                                            入库时间:&nbsp;&nbsp;<asp:DropDownList ID="DropDownList15" runat="server" AutoPostBack="True" 
-                                                onselectedindexchanged="ddlYear_SelectedIndexChanged">
+                                            入库时间:&nbsp;&nbsp;<asp:DropDownList ID="ddlYear3" runat="server" AutoPostBack="True" 
+                                                onselectedindexchanged="ddlYear_SelectedIndexChanged3">
                                             </asp:DropDownList>
-                                            年<asp:DropDownList ID="DropDownList16" runat="server" AutoPostBack="True" 
-                                                onselectedindexchanged="ddlMonth_SelectedIndexChanged">
+                                            年<asp:DropDownList ID="ddlMonth3" runat="server" AutoPostBack="True" 
+                                                onselectedindexchanged="ddlMonth_SelectedIndexChanged3">
                                             </asp:DropDownList>
-                                            月<asp:DropDownList ID="DropDownList17" runat="server" AutoPostBack="True" 
-                                                onselectedindexchanged="ddlDay_SelectedIndexChanged">
+                                            月<asp:DropDownList ID="ddlDay3" runat="server" AutoPostBack="True" 
+                                                onselectedindexchanged="ddlDay_SelectedIndexChanged3">
                                             </asp:DropDownList>
                                         </div>  
                                      </td>
@@ -785,9 +789,16 @@
                                  </tr>
                                  <tr>
                                      <td>
+                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                        库存数量:&nbsp;&nbsp;<asp:TextBox ID="TextBox23" runat="server"></asp:TextBox>
+                                        </div>  
+                                     </td>
+                                 </tr>
+                                 <tr>
+                                     <td>
                                          <div style="text-align:center; padding:20px;">
-                                             <asp:Button ID="Button23" runat="server" Text="修  改" onclick="Button14_Click"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button
-                                                 ID="Button24" runat="server" Text="删  除" onclick="Button17_Click" />
+                                             <asp:Button ID="Button23" runat="server" Text="修  改" onclick="Button23_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button
+                                                 ID="Button24" runat="server" Text="删  除" onclick="Button24_Click" />
                                         </div>  
                                      </td>
                                  </tr>
@@ -947,6 +958,15 @@
                         <asp:PostBackTrigger ControlID="Button28"/>
                         <asp:PostBackTrigger ControlID="Button29"/>
                         <asp:PostBackTrigger ControlID="Button30"/>
+                        <asp:PostBackTrigger ControlID="Button15"/>
+                        <asp:PostBackTrigger ControlID="Button19"/>
+                        <asp:PostBackTrigger ControlID="Button21"/>
+                        <asp:PostBackTrigger ControlID="Button22"/>
+                        <asp:PostBackTrigger ControlID="Button16"/>
+                        <asp:PostBackTrigger ControlID="Button20"/>
+                        <asp:PostBackTrigger ControlID="Button23"/>
+                        <asp:PostBackTrigger ControlID="Button24"/>
+                        <asp:PostBackTrigger ControlID="Button31"/>
                     </Triggers>
                 </asp:UpdatePanel>
             </td>
