@@ -208,10 +208,12 @@ public partial class administrator : System.Web.UI.Page
     protected void selectTicket(object sender, EventArgs e)
     {
         MultiView1.ActiveViewIndex = 2;
-        String selectsql = "SELECT reader.name,ticket.ISBN,ticket.fineMoney,ticket.fineDate FROM ticket,borrowCard,reader WHERE ticket.bcid=borrowCard.id AND borrowCard.readerid=reader.id";
+        //String selectsql = "SELECT reader.name,ticket.ISBN,ticket.fineMoney,ticket.fineDate FROM ticket,borrowCard,reader WHERE ticket.bcid=borrowCard.id AND borrowCard.readerid=reader.id";
+        String selectsql = "SELECT * FROM v_ticket";
         DataTable table = SqlHelp.GetDataTableValue(selectsql);
         table.Columns["name"].ColumnName = "姓名";
         table.Columns["ISBN"].ColumnName = "图书编号";
+        table.Columns["bookName"].ColumnName = "图书名称";
         table.Columns["fineMoney"].ColumnName = "罚款金额";
         table.Columns["fineDate"].ColumnName = "罚款起始日期";
         
@@ -226,14 +228,15 @@ public partial class administrator : System.Web.UI.Page
     protected void alterReader(object sender, EventArgs e)
     {
         MultiView1.ActiveViewIndex = 5;
-        String selectsql = "SELECT reader.id,reader.name,reader.sex,reader.phone,borrowCard.id,borrowCard.blid,reader.password FROM borrowCard,reader WHERE  borrowCard.readerid=reader.id";
+        //String selectsql = "SELECT reader.id,reader.name,reader.sex,reader.phone,borrowCard.id,borrowCard.blid,reader.password FROM borrowCard,reader WHERE  borrowCard.readerid=reader.id";
+        String selectsql = "SELECT * FROM v_reader";
         DataTable table = SqlHelp.GetDataTableValue(selectsql);
         table.Columns["id"].ColumnName = "读者编号";
         table.Columns["name"].ColumnName = "读者姓名";
         table.Columns["sex"].ColumnName = "读者性别";
         table.Columns["phone"].ColumnName = "读者电话";
-        table.Columns["id1"].ColumnName = "借阅卡号";
-        table.Columns["blid"].ColumnName = "借阅等级";
+        table.Columns["borrowCard"].ColumnName = "借阅卡号";
+        table.Columns["level"].ColumnName = "借阅等级";
         table.Columns["password"].ColumnName = "读者密码";
         //table.Columns["读者性别"].DataType = Type.GetType("System.String");
         Reader reader=new Reader();
@@ -303,10 +306,11 @@ public partial class administrator : System.Web.UI.Page
     protected void alterBook(object sender, EventArgs e)
     {
         MultiView1.ActiveViewIndex = 9;
-        String selectsql = "SELECT book.ISBN,book.name,bookCatagory.name,book.publish,book.author,book.publishDate,book.price,book.storagedate,book.stockNumber,book.inNumber FROM book,bookCatagory WHERE bookCatagory.id=book.catagoryId";
+        //String selectsql = "SELECT book.ISBN,book.name,bookCatagory.name,book.publish,book.author,book.publishDate,book.price,book.storagedate,book.stockNumber,book.inNumber FROM book,bookCatagory WHERE bookCatagory.id=book.catagoryId";
+        String selectsql = "SELECT * FROM v_book";
         DataTable table = SqlHelp.GetDataTableValue(selectsql);
         table.Columns["name"].ColumnName = "图书名称";
-        table.Columns["name1"].ColumnName = "类别";
+        table.Columns["catagoryName"].ColumnName = "类别";
         table.Columns["publish"].ColumnName = "出版社";
         table.Columns["author"].ColumnName = "作者";
         table.Columns["publishDate"].ColumnName = "出版日期";
@@ -391,7 +395,8 @@ public partial class administrator : System.Web.UI.Page
     {
         String a = TextBox1.Text;
         //reader.name,ticket.ISBN,ticket.fineMoney,ticket.fineDate
-        String selectsql = "SELECT DISTINCT reader.name,ticket.ISBN,ticket.fineMoney,ticket.fineDate FROM ticket,borrowCard,reader WHERE ticket.bcid=borrowCard.id AND borrowCard.readerid=reader.id AND reader.name LIKE '%%" + a + "%%' OR ticket.ISBN LIKE '%%" + a + "%%' OR ticket.fineMoney LIKE '%%" + a + "%%' OR ticket.fineDate LIKE '%%" + a + "%%'";
+        //String selectsql = "SELECT DISTINCT reader.name,ticket.ISBN,ticket.fineMoney,ticket.fineDate FROM ticket,borrowCard,reader WHERE ticket.bcid=borrowCard.id AND borrowCard.readerid=reader.id AND reader.name LIKE '%%" + a + "%%' OR ticket.ISBN LIKE '%%" + a + "%%' OR ticket.fineMoney LIKE '%%" + a + "%%' OR ticket.fineDate LIKE '%%" + a + "%%'";
+        String selectsql = "SELECT * FROM v_ticket WHERE name LIKE '%%" + a + "%%' OR ISBN LIKE '%%" + a + "%%' OR fineMoney LIKE '%%" + a + "%%' OR fineDate LIKE '%%" + a + "%%' OR bookName LIKE '%%"+a+"%%'";
         if (SqlHelp.SqlServerRecordCount(selectsql) > 0)
         {
             DataTable table = SqlHelp.GetDataTableValue(selectsql);
@@ -708,7 +713,7 @@ public partial class administrator : System.Web.UI.Page
             }
             else
             {
-                Response.Write("<script>alert('查询失败')</script>");
+                Response.Write("<script>alert('没有符合的记录')</script>");
             }
 
         }
@@ -852,7 +857,7 @@ public partial class administrator : System.Web.UI.Page
             }
             else
             {
-                Response.Write("<script>alert('查询失败')</script>");
+                Response.Write("<script>alert('没有符合的记录')</script>");
             }
 
         }
@@ -898,6 +903,87 @@ public partial class administrator : System.Web.UI.Page
         else
         {
             Response.Write("<script>alert('删除失败')</script>");
+        }
+    }
+    //搜索读者响应函数
+    protected void Button32_Click(object sender, EventArgs e)
+    {
+        String a = TextBox37.Text;
+        String selectsql;
+        if (a.Equals("男"))
+        {
+            a = "0";
+            selectsql = "SELECT * FROM v_reader WHERE sex="+a;
+        }
+        else if (a.Equals("女"))
+        {
+            a = "1";
+            selectsql = "SELECT * FROM v_reader WHERE sex=" + a;
+        }
+        else
+        {
+            selectsql = "SELECT * FROM v_reader WHERE id LIKE '%%" + a + "%%' OR name LIKE '%%" + a + "%%' OR sex LIKE '%%" + a + "%%' OR phone LIKE '%%" + a + "%%' OR borrowCard LIKE '%%" + a + "%%' OR level LIKE '%%" + a + "%%' OR password LIKE '%%" + a + "%%'";
+        }
+        //reader.name,ticket.ISBN,ticket.fineMoney,ticket.fineDate
+        //String selectsql = "SELECT DISTINCT reader.name,ticket.ISBN,ticket.fineMoney,ticket.fineDate FROM ticket,borrowCard,reader WHERE ticket.bcid=borrowCard.id AND borrowCard.readerid=reader.id AND reader.name LIKE '%%" + a + "%%' OR ticket.ISBN LIKE '%%" + a + "%%' OR ticket.fineMoney LIKE '%%" + a + "%%' OR ticket.fineDate LIKE '%%" + a + "%%'";
+        
+        if (SqlHelp.SqlServerRecordCount(selectsql) > 0)
+        {
+            DataTable table = SqlHelp.GetDataTableValue(selectsql);
+            table.Columns["id"].ColumnName = "读者编号";
+            table.Columns["name"].ColumnName = "读者姓名";
+            table.Columns["sex"].ColumnName = "读者性别";
+            table.Columns["phone"].ColumnName = "读者电话";
+            table.Columns["borrowCard"].ColumnName = "借阅卡号";
+            table.Columns["level"].ColumnName = "借阅等级";
+            table.Columns["password"].ColumnName = "读者密码";
+            Reader reader = new Reader();
+            DataTable table1 = reader.UpdateDataTable(table);
+            foreach (DataRow dr in table1.Rows)  //对特定的行添加限制条件
+            {
+                if (dr[2].Equals("0"))
+                {
+                    dr[2] = "男";
+                }
+                else
+                {
+                    dr[2] = "女";
+                }
+            }
+            GridView4.DataSource = table1;
+            //GridView4.DataSource = table;
+            GridView4.DataBind();
+            Response.Write("<script>alert('查询成功')</script>");
+        }
+        else
+        {
+            Response.Write("<script>alert('没有查询到符合的记录')</script>");
+        }
+    }
+    //搜索图书响应函数
+    protected void Button31_Click(object sender, EventArgs e)
+    {
+        String a = TextBox36.Text;
+        String selectsql = "SELECT * FROM v_book WHERE ISBN LIKE '%%" + a + "%%' OR name LIKE '%%" + a + "%%' OR catagoryName LIKE '%%" + a + "%%' OR publish LIKE '%%" + a + "%%' OR author LIKE '%%" + a + "%%' OR publishDate LIKE '%%" + a + "%%' OR price LIKE '%%" + a + "%%' OR storagedate LIKE '%%" + a + "%%' OR stockNumber LIKE '%%" + a + "%%' OR inNumber LIKE '%%" + a + "%%'";
+        if (SqlHelp.SqlServerRecordCount(selectsql) > 0)
+        {
+            DataTable table = SqlHelp.GetDataTableValue(selectsql);
+            table.Columns["name"].ColumnName = "图书名称";
+            table.Columns["catagoryName"].ColumnName = "类别";
+            table.Columns["publish"].ColumnName = "出版社";
+            table.Columns["author"].ColumnName = "作者";
+            table.Columns["publishDate"].ColumnName = "出版日期";
+            table.Columns["price"].ColumnName = "定价";
+            table.Columns["storagedate"].ColumnName = "入库日期";
+            table.Columns["stockNumber"].ColumnName = "入库数量";
+            table.Columns["inNumber"].ColumnName = "库存数量";
+            GridView3.DataSource = table;
+            GridView3.DataBind();
+            Response.Write("<script>alert('查询成功')</script>");
+        }
+        else
+        {
+            Response.Write("<script>alert('没有查询到符合的记录')</script>");
         }
     }
 }

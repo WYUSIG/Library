@@ -67,9 +67,9 @@
                     <div class="panel panel-default">
 		                <div class="panel-heading">
 			                <h4 class="panel-title">
-				                <a id="A1" data-toggle="collapse" data-parent="#accordion" 
+				                <a id="menu4" data-toggle="collapse" data-parent="#accordion" 
 				                   href="#collapseFour" onclick="a(this);">
-					                <img id="Img1" alt="" style="width:30px; height:30px;" src="res/下一步.png" /> 书库管理
+					                <img id="next4" alt="" style="width:30px; height:30px;" src="res/下一步.png" /> 书库管理
 				                </a>
 			                </h4>
 		                </div>
@@ -84,9 +84,9 @@
                     <div class="panel panel-default">
 		                <div class="panel-heading">
 			                <h4 class="panel-title">
-				                <a id="A2" data-toggle="collapse" data-parent="#accordion" 
+				                <a id="menu5" data-toggle="collapse" data-parent="#accordion" 
 				                   href="#collapseFive" onclick="a(this);">
-					                <img id="Img2" alt="" style="width:30px; height:30px;" src="res/下一步.png" /> 图书类别管理
+					                <img id="next5" alt="" style="width:30px; height:30px;" src="res/下一步.png" /> 图书类别管理
 				                </a>
 			                </h4>
 		                </div>
@@ -101,9 +101,9 @@
                     <div class="panel panel-default">
 		                <div class="panel-heading">
 			                <h4 class="panel-title">
-				                <a id="A3" data-toggle="collapse" data-parent="#accordion" 
+				                <a id="menu6" data-toggle="collapse" data-parent="#accordion" 
 				                   href="#collapseSix" onclick="a(this);">
-					                <img id="Img3" alt="" style="width:30px; height:30px;" src="res/下一步.png" /> 图书信息管理
+					                <img id="next6" alt="" style="width:30px; height:30px;" src="res/下一步.png" /> 图书信息管理
 				                </a>
 			                </h4>
 		                </div>
@@ -123,7 +123,7 @@
                     <ContentTemplate>
                     <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex = "-1">  
                         <asp:View ID="View1" runat="server">  
-                          <div style="border:1px solid red;">
+                          <div >
                               <div style="width:40%; margin: 0 auto;" align="center">
                                     <img alt="" src="res/借书.png" style="width:150px; height:150px;"/><br />
                                     <br />
@@ -142,7 +142,7 @@
                           </div>
                         </asp:View>  
                         <asp:View ID="View2" runat="server">  
-                            <div style="border:1px solid red;">
+                            <div >
                                   <div style="width:40%; margin: 0 auto;" align="center">
                                         <img alt="" src="res/还书.png" style="width:150px; height:150px;"/><br />
                                         <br />
@@ -159,11 +159,11 @@
                             </div> 
                         </asp:View>     
                         <asp:View ID="View3" runat="server">  
-                             <div style="border:1px solid red;" >
+                             <div style="margin:0px 0px 400px 0px" >
                                   <div style="color:#FFFFFF; background-color:#483D8B; padding:10px;">
                                     &nbsp;&nbsp;&nbsp;<asp:Label ID="Label6" runat="server" Text="罚款管理"></asp:Label>
                                   </div>
-                                  <div style="width:40%; margin: 2px auto;" align="center">
+                                  <div style="width:40%; margin: 0px auto;" align="center">
                                       <br /><br /><br />
                                       <asp:TextBox ID="TextBox1" runat="server" style="width:50%"></asp:TextBox>&nbsp;&nbsp;&nbsp;
                                       <asp:Button ID="Button1" runat="server" Text="查  询" onclick="Button1_Click" />
@@ -181,7 +181,7 @@
                             </div> 
                         </asp:View>       
                         <asp:View ID="View4" runat="server">  
-                             <table class="styleTable" border="1">
+                             <table class="styleTable" border="1" style="margin:0px 0px 400px 0px">
                                  <tr>
                                      <td>
                                          <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
@@ -192,7 +192,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请输入读者姓名:&nbsp;&nbsp;<asp:TextBox ID="TextBox2" runat="server" ></asp:TextBox>
                                      </div>
                                          
@@ -200,7 +200,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请选择读者性别:&nbsp;&nbsp;<asp:DropDownList ID="DropDownList1" runat="server">
                                                  <asp:ListItem Selected="True">男</asp:ListItem>
                                                  <asp:ListItem>女</asp:ListItem>
@@ -210,14 +210,14 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                        <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                        <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请输入电话号码:&nbsp;&nbsp;<asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
                                         </div>    
                                      </td>
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请选择读者借阅级别:&nbsp;&nbsp;<asp:DropDownList ID="DropDownList8" runat="server">
                                                  <asp:ListItem Selected="True">1</asp:ListItem>
                                                  <asp:ListItem>2</asp:ListItem>
@@ -228,7 +228,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请输入密码:&nbsp;&nbsp;<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
                                         </div>  
                                      </td>
@@ -243,7 +243,7 @@
                              </table>
                         </asp:View>
                         <asp:View ID="View5" runat="server">  
-                             <table class="styleTable" border="1">
+                             <table class="styleTable" border="1" style="margin:0px 0px 400px 0px">
                                  <tr>
                                      <td>
                                          <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
@@ -262,7 +262,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         读者姓名:&nbsp;&nbsp;<asp:Label ID="Label9" runat="server" Text=""></asp:Label>
                                      </div>
                                          
@@ -270,7 +270,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         读者性别:&nbsp;&nbsp;<asp:Label ID="Label10" runat="server" Text=""></asp:Label>
                                                  
                                           </div>
@@ -278,28 +278,28 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                        <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                        <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         读者电话号码:&nbsp;&nbsp;<asp:Label ID="Label11" runat="server" Text=""></asp:Label>
                                         </div>    
                                      </td>
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         读者借阅卡号:&nbsp;&nbsp;<asp:Label ID="Label13" runat="server" Text=""></asp:Label>
                                         </div>  
                                      </td>
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         读者借阅级别:&nbsp;&nbsp;<asp:Label ID="Label20" runat="server" Text="Label"></asp:Label>
                                           </div>
                                      </td>
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         读者密码:&nbsp;&nbsp;<asp:Label ID="Label12" runat="server" Text="Label"></asp:Label>
                                         </div>  
                                      </td>
@@ -308,7 +308,7 @@
                              </table>
                         </asp:View>   
                         <asp:View ID="View6" runat="server">  
-                             <table class="styleTable" border="1">
+                             <table class="styleTable" border="1" style="margin:0px 0px 400px 0px">
                                  <tr>
                                      <td>
                                          <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
@@ -319,7 +319,12 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
+                                        <div style="margin:0px 0px 20px 0px; ">
+                                            <asp:TextBox ID="TextBox37" runat="server" Style="width:40%"></asp:TextBox>&nbsp;&nbsp;&nbsp;<asp:Button
+                                             ID="Button32" runat="server" Text="搜  索" onclick="Button32_Click" />
+                                             
+                                         </div>
                                          <asp:GridView ID="GridView4" runat="server">
                                             
                                          </asp:GridView>
@@ -343,7 +348,7 @@
                              </table>
                         </asp:View> 
                         <asp:View ID="View7" runat="server">  
-                             <table class="styleTable" border="1">
+                             <table class="styleTable" border="1" style="margin:0px 0px 400px 0px">
                                  <tr>
                                      <td>
                                          <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
@@ -354,7 +359,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请输入图书类别名称:&nbsp;&nbsp;<asp:TextBox ID="TextBox10" runat="server"></asp:TextBox>
                                      </div>
                                          
@@ -362,7 +367,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请选择所属书库:&nbsp;&nbsp;<asp:DropDownList ID="DropDownList3" runat="server">
                                              </asp:DropDownList>
                                           </div>
@@ -370,7 +375,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                        <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                        <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请输入图书类别描述:&nbsp;&nbsp;<asp:TextBox ID="TextBox11" runat="server"></asp:TextBox>
                                         </div>    
                                      </td>
@@ -386,7 +391,7 @@
                              </table>
                         </asp:View>
                         <asp:View ID="View8" runat="server">  
-                             <table class="styleTable" border="1">
+                             <table class="styleTable" border="1" style="margin:0px 0px 400px 0px">
                                  <tr>
                                      <td>
                                          <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
@@ -397,7 +402,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                          <asp:GridView ID="GridView2" runat="server">
                                             
                                          </asp:GridView>
@@ -423,7 +428,7 @@
                              </table>
                         </asp:View>  
                         <asp:View ID="View9" runat="server">  
-                             <table class="styleTable" border="1">
+                             <table class="styleTable" border="1" style="margin:0px 0px 400px 0px">
                                  <tr>
                                      <td>
                                          <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
@@ -434,7 +439,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请输入图书ISBN:&nbsp;&nbsp;<asp:TextBox ID="TextBox12" runat="server"></asp:TextBox>
                                      </div>
                                          
@@ -442,7 +447,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请输入图书名称:&nbsp;&nbsp;<asp:TextBox ID="TextBox15" runat="server"></asp:TextBox>
                                      </div>
                                          
@@ -450,7 +455,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请选择所属图书类别:&nbsp;&nbsp;<asp:DropDownList ID="DropDownList4" runat="server">
                                              </asp:DropDownList>
                                           </div>
@@ -458,21 +463,21 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                        <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                        <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请输入图书出版社名称:&nbsp;&nbsp;<asp:TextBox ID="TextBox13" runat="server"></asp:TextBox>
                                         </div>    
                                      </td>
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请输入作者名称:&nbsp;&nbsp;<asp:TextBox ID="TextBox14" runat="server"></asp:TextBox>
                                         </div>  
                                      </td>
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                             请输入出版日期:&nbsp;&nbsp;<asp:DropDownList ID="ddlYear" runat="server" AutoPostBack="True" 
                                                 onselectedindexchanged="ddlYear_SelectedIndexChanged">
                                             </asp:DropDownList>
@@ -488,14 +493,14 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请输入图书定价:&nbsp;&nbsp;<asp:TextBox ID="TextBox16" runat="server"></asp:TextBox>
                                         </div>  
                                      </td>
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                             请输入入库时间:&nbsp;&nbsp;<asp:DropDownList ID="ddlYear1" runat="server" AutoPostBack="True" 
                                                 onselectedindexchanged="ddlYear_SelectedIndexChanged1">
                                             </asp:DropDownList>
@@ -510,7 +515,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请输入入库数量:&nbsp;&nbsp;<asp:TextBox ID="TextBox17" runat="server"></asp:TextBox>
                                         </div>  
                                      </td>
@@ -525,7 +530,7 @@
                              </table>
                         </asp:View>   
                         <asp:View ID="View10" runat="server">  
-                             <table class="styleTable" border="1">
+                             <table class="styleTable" border="1" style="margin:0px 0px 400px 0px">
                                  <tr>
                                      <td>
                                          <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
@@ -536,11 +541,13 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 35%; padding:20px;">
-                                         <asp:TextBox ID="TextBox36" runat="server" Style="width:40%"></asp:TextBox>&nbsp;&nbsp;&nbsp;<asp:Button
-                                             ID="Button31" runat="server" Text="搜  索" />
-                                             <br />
-                                             <br />
+                                     <div style="margin:0px 0px 0px 25%; padding:20px;">
+                                         <div style="margin:0px 0px 20px 0px;">
+                                            <asp:TextBox ID="TextBox36" runat="server" Style="width:40%"></asp:TextBox>&nbsp;&nbsp;&nbsp;<asp:Button
+                                             ID="Button31" runat="server" Text="搜  索" onclick="Button31_Click" />
+                                             
+                                         </div>
+                                         
                                          <asp:GridView ID="GridView3" runat="server">
                                             
                                          </asp:GridView>
@@ -564,7 +571,7 @@
                              </table>
                         </asp:View>      
                         <asp:View ID="View11" runat="server">  
-                             <table class="styleTable" border="1">
+                             <table class="styleTable" border="1" style="margin:0px 0px 400px 0px">
                                  <tr>
                                      <td>
                                          <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
@@ -575,7 +582,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         读者编号:&nbsp;&nbsp;<asp:Label ID="Label22" runat="server" Text="Label"></asp:Label>
                                      </div>
                                          
@@ -583,7 +590,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         读者姓名:&nbsp;&nbsp;<asp:TextBox ID="TextBox7" runat="server" ></asp:TextBox>
                                      </div>
                                          
@@ -591,7 +598,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         读者性别:&nbsp;&nbsp;<asp:DropDownList ID="DropDownList2" runat="server">
                                                  <asp:ListItem>男</asp:ListItem>
                                                  <asp:ListItem>女</asp:ListItem>
@@ -601,14 +608,14 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                        <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                        <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         电话号码:&nbsp;&nbsp;<asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
                                         </div>    
                                      </td>
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         借阅卡号:&nbsp;&nbsp;<asp:Label ID="Label23" runat="server" Text="Label"></asp:Label>
                                      </div>
                                          
@@ -616,7 +623,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         借阅级别:&nbsp;&nbsp;<asp:DropDownList ID="DropDownList9" runat="server">
                                                  <asp:ListItem>1</asp:ListItem>
                                                  <asp:ListItem>2</asp:ListItem>
@@ -627,7 +634,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         密码:&nbsp;&nbsp;<asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
                                         </div>  
                                      </td>
@@ -643,7 +650,7 @@
                              </table>
                         </asp:View>
                         <asp:View ID="View12" runat="server">  
-                             <table class="styleTable" border="1">
+                             <table class="styleTable" border="1" style="margin:0px 0px 400px 0px">
                                  <tr>
                                      <td>
                                          <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
@@ -654,7 +661,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         类别编号:&nbsp;&nbsp;<asp:Label ID="Label25" runat="server" Text="Label"></asp:Label>
                                      </div>
                                          
@@ -662,7 +669,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         类别名称:&nbsp;&nbsp;<asp:TextBox ID="TextBox21" runat="server" ></asp:TextBox>
                                      </div>
                                          
@@ -670,7 +677,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         所属书库:&nbsp;&nbsp;<asp:DropDownList ID="DropDownList10" runat="server">
                                              </asp:DropDownList>
                                           </div>
@@ -678,7 +685,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                        <div style="margin:0px 0px 0px 600px; padding:20px;">
+                                        <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         描述:&nbsp;&nbsp;<asp:TextBox ID="TextBox22" runat="server"></asp:TextBox>
                                         </div>    
                                      </td>
@@ -695,7 +702,7 @@
                              </table>
                         </asp:View>  
                         <asp:View ID="View13" runat="server">  
-                             <table class="styleTable" border="1">
+                             <table class="styleTable" border="1" style="margin:0px 0px 400px 0px">
                                  <tr>
                                      <td>
                                          <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
@@ -706,7 +713,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         图书ISBN:&nbsp;&nbsp;<asp:Label ID="Label31" runat="server" Text="Label"></asp:Label>
                                      </div>
                                          
@@ -714,7 +721,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         图书名称:&nbsp;&nbsp;<asp:TextBox ID="TextBox24" runat="server"></asp:TextBox>
                                      </div>
                                          
@@ -722,7 +729,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         所属图书类别:&nbsp;&nbsp;<asp:DropDownList ID="DropDownList11" runat="server">
                                              </asp:DropDownList>
                                           </div>
@@ -730,21 +737,21 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                        <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                        <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         图书出版社名称:&nbsp;&nbsp;<asp:TextBox ID="TextBox25" runat="server"></asp:TextBox>
                                         </div>    
                                      </td>
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         作者名称:&nbsp;&nbsp;<asp:TextBox ID="TextBox26" runat="server"></asp:TextBox>
                                         </div>  
                                      </td>
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                             出版日期:&nbsp;&nbsp;<asp:DropDownList ID="ddlYear2" runat="server" AutoPostBack="True" 
                                                 onselectedindexchanged="ddlYear_SelectedIndexChanged2">
                                             </asp:DropDownList>
@@ -760,14 +767,14 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         图书定价:&nbsp;&nbsp;<asp:TextBox ID="TextBox27" runat="server"></asp:TextBox>
                                         </div>  
                                      </td>
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                             入库时间:&nbsp;&nbsp;<asp:DropDownList ID="ddlYear3" runat="server" AutoPostBack="True" 
                                                 onselectedindexchanged="ddlYear_SelectedIndexChanged3">
                                             </asp:DropDownList>
@@ -782,14 +789,14 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         入库数量:&nbsp;&nbsp;<asp:TextBox ID="TextBox28" runat="server"></asp:TextBox>
                                         </div>  
                                      </td>
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         库存数量:&nbsp;&nbsp;<asp:TextBox ID="TextBox23" runat="server"></asp:TextBox>
                                         </div>  
                                      </td>
@@ -805,7 +812,7 @@
                              </table>
                         </asp:View>   
                         <asp:View ID="View14" runat="server">  
-                             <table class="styleTable" border="1">
+                             <table class="styleTable" border="1" style="margin:0px 0px 400px 0px">
                                  <tr>
                                      <td>
                                          <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
@@ -816,7 +823,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请输入书库名称:&nbsp;&nbsp;<asp:TextBox ID="TextBox29" runat="server"></asp:TextBox>
                                      </div>
                                          
@@ -824,14 +831,14 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请输入书库地址:&nbsp;&nbsp;<asp:TextBox ID="TextBox31" runat="server"></asp:TextBox>
                                           </div>
                                      </td>
                                  </tr>
                                  <tr>
                                      <td>
-                                        <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                        <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         请输入联系电话:&nbsp;&nbsp;<asp:TextBox ID="TextBox30" runat="server"></asp:TextBox>
                                         </div>    
                                      </td>
@@ -847,7 +854,7 @@
                              </table>
                         </asp:View>   
                         <asp:View ID="View15" runat="server">  
-                             <table class="styleTable" border="1">
+                             <table class="styleTable" border="1" style="margin:0px 0px 400px 0px">
                                  <tr>
                                      <td>
                                          <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
@@ -858,7 +865,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                          <asp:GridView ID="GridView5" runat="server">
                                             
                                          </asp:GridView>
@@ -882,7 +889,7 @@
                              </table>
                         </asp:View>    
                         <asp:View ID="View16" runat="server">  
-                             <table class="styleTable" border="1">
+                             <table class="styleTable" border="1" style="margin:0px 0px 400px 0px">
                                  <tr>
                                      <td>
                                          <div style="color:#FFFFFF; background-color:#483D8B; text-align:center; padding:20px;">
@@ -893,7 +900,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         书库编号:&nbsp;&nbsp;<asp:Label ID="Label30" runat="server" Text="Label"></asp:Label>
                                      </div>
                                          
@@ -901,7 +908,7 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                     <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                     <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         书库名称:&nbsp;&nbsp;<asp:TextBox ID="TextBox33" runat="server"></asp:TextBox>
                                      </div>
                                          
@@ -909,14 +916,14 @@
                                  </tr>
                                  <tr>
                                      <td>
-                                         <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                         <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         书库地址:&nbsp;&nbsp;<asp:TextBox ID="TextBox34" runat="server"></asp:TextBox>
                                           </div>
                                      </td>
                                  </tr>
                                  <tr>
                                      <td>
-                                        <div style="margin:0px 0px 0px 400px; padding:20px;">
+                                        <div style="margin:0px 0px 0px 38%; padding:20px;">
                                         联系电话:&nbsp;&nbsp;<asp:TextBox ID="TextBox35" runat="server"></asp:TextBox>
                                         </div>    
                                      </td>
@@ -967,6 +974,7 @@
                         <asp:PostBackTrigger ControlID="Button23"/>
                         <asp:PostBackTrigger ControlID="Button24"/>
                         <asp:PostBackTrigger ControlID="Button31"/>
+                        <asp:PostBackTrigger ControlID="Button32"/>
                     </Triggers>
                 </asp:UpdatePanel>
             </td>
